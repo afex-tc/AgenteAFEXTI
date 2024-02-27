@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="InsertarLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Log" type="tns:Log" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Log">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TipoContenido" type="tns:TipoContenido" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contenido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Origen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="TipoContenido">
+        <s:restriction base="s:string">
+          <s:enumeration value="Text" />
+          <s:enumeration value="Xml" />
+          <s:enumeration value="Json" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="InsertarLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarLogDataDog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogDataDog" type="tns:LogDataDog" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LogDataDog">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Source" type="tns:LogDatadogSource" />
+          <s:element minOccurs="1" maxOccurs="1" name="Duration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Servicio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LogDatadogStatus" type="tns:LogDatadogStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contenido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaTermino" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LogDatadogSource">
+        <s:restriction base="s:string">
+          <s:enumeration value="DEFAULT" />
+          <s:enumeration value="EAFEX" />
+          <s:enumeration value="AFEXCHANGEWEB" />
+          <s:enumeration value="MONEYGRAM" />
+          <s:enumeration value="WSAFEXAPI" />
+          <s:enumeration value="AFEXCHANGEWEBDLL" />
+          <s:enumeration value="AFEXGIROSAPI" />
+          <s:enumeration value="MONITORAGENTES" />
+          <s:enumeration value="ELEKTRONCONSUMER" />
+          <s:enumeration value="WSCUMPLIMIENTO" />
+          <s:enumeration value="ESB_AFEX" />
+          <s:enumeration value="AFEXENTERPRISESERVICEBUS" />
+          <s:enumeration value="AFEXPRESSWEB" />
+          <s:enumeration value="PULPO" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="LogDatadogStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Emergency" />
+          <s:enumeration value="Error" />
+          <s:enumeration value="Warn" />
+          <s:enumeration value="Info" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="InsertarLogDataDogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarLogDataDogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarLogDataDogHOST">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogDataDog" type="tns:LogDataDog" />
+            <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Host" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarLogDataDogHOSTResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsertarLogDataDogHOSTResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="InsertarLogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarLog" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLogDataDogSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarLogDataDog" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLogDataDogSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarLogDataDogResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLogDataDogHOSTSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarLogDataDogHOST" />
+  </wsdl:message>
+  <wsdl:message name="InsertarLogDataDogHOSTSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarLogDataDogHOSTResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IESB_AFEX_ServicioLoggerSoap">
+    <wsdl:operation name="InsertarLog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guarda un registro de Log general</wsdl:documentation>
+      <wsdl:input message="tns:InsertarLogSoapIn" />
+      <wsdl:output message="tns:InsertarLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDog">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guarda Log en DataDog</wsdl:documentation>
+      <wsdl:input message="tns:InsertarLogDataDogSoapIn" />
+      <wsdl:output message="tns:InsertarLogDataDogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDogHOST">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Guarda Log en DataDog</wsdl:documentation>
+      <wsdl:input message="tns:InsertarLogDataDogHOSTSoapIn" />
+      <wsdl:output message="tns:InsertarLogDataDogHOSTSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IESB_AFEX_ServicioLoggerSoap" type="tns:IESB_AFEX_ServicioLoggerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarLog">
+      <soap:operation soapAction="http://tempuri.org/InsertarLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDog">
+      <soap:operation soapAction="http://tempuri.org/InsertarLogDataDog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDogHOST">
+      <soap:operation soapAction="http://tempuri.org/InsertarLogDataDogHOST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IESB_AFEX_ServicioLoggerSoap12" type="tns:IESB_AFEX_ServicioLoggerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarLog">
+      <soap12:operation soapAction="http://tempuri.org/InsertarLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDog">
+      <soap12:operation soapAction="http://tempuri.org/InsertarLogDataDog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarLogDataDogHOST">
+      <soap12:operation soapAction="http://tempuri.org/InsertarLogDataDogHOST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IESB_AFEX_ServicioLogger">
+    <wsdl:port name="IESB_AFEX_ServicioLoggerSoap" binding="tns:IESB_AFEX_ServicioLoggerSoap">
+      <soap:address location="http://192.168.160.39:8000/IESB_AFEX_ServicioLogger.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IESB_AFEX_ServicioLoggerSoap12" binding="tns:IESB_AFEX_ServicioLoggerSoap12">
+      <soap12:address location="http://192.168.160.39:8000/IESB_AFEX_ServicioLogger.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

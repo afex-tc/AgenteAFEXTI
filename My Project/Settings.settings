@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="AgenteAFEXTI_IESB_AV_ServicioMensajes_IESB_AV_ServicioMensajes" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.160.39:9005/IESB_AV_ServicioMensajes.asmx</Value>
+    </Setting>
+    <Setting Name="AgenteAFEXTI_IESB_AFEX_ServicioLogger_IESB_AFEX_ServicioLogger" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.160.39:9005/IESB_AFEX_ServicioLogger.asmx</Value>
+    </Setting>
+    <Setting Name="winPublicadorAFEX_IESB_AFEX_ServicioLogger_IESB_AFEX_ServicioLogger" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.160.39:8000/IESB_AFEX_ServicioLogger.asmx</Value>
+    </Setting>
+    <Setting Name="winPublicadorAFEX_IESB_AV_ServicioMensajes_IESB_AV_ServicioMensajes" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://192.168.160.39:9005/IESB_AV_ServicioMensajes.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

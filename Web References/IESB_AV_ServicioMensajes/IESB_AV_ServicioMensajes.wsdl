@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="EnviarCorreoElectronico_Mail_Old">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="FormatoEMAIL">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ninguno" />
+          <s:enumeration value="TEXT" />
+          <s:enumeration value="HTML" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TipoServicio">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ninguno" />
+          <s:enumeration value="Transferencias" />
+          <s:enumeration value="AMEX" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="EnviarCorreoElectronico_Mail_OldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_Mail_OldResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MensajeResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Resultado" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionError" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarCorreoElectronico_Mail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_MailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_MailResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_SQL_Server">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_SQL_ServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_SQL_ServerResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_AFEX">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAplicacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdMail" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdAmbiente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombrePrefil" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailDestinatario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Rut" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NombreCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Monto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Moneda" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ejecutivo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="CodigoSolicitud" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_AFEXResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnvioCorreoElectronico_AFEXResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Mail_2_Old">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MensajeRequest" type="tns:MensajeRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MensajeRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContenidoDocumento1" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreDocumento1" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarCorreoElectronico_Mail_2_OldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_Mail_2_OldResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Mail_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MensajeRequest" type="tns:MensajeRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Mail_2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_Mail_2Result" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronicoAdjuntos_Old">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MensajeRequest" type="tns:MensajeAdjuntosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MensajeAdjuntosRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Adjuntos" type="tns:ArrayOfDocumentoAdjunto" />
+          <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDocumentoAdjunto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DocumentoAdjunto" type="tns:DocumentoAdjunto" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocumentoAdjunto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contenido" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarCorreoElectronicoAdjuntos_OldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronicoAdjuntos_OldResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_EstandarSQL_Old">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailCopia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Formato" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Importancia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_EstandarSQL_OldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnvioCorreoElectronico_EstandarSQL_OldResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_AplicacionSQL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAplicacion" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdMail" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdAmbiente" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_AplicacionSQLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnvioCorreoElectronico_AplicacionSQLResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Asincrono_Old">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAplicacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Asincrono_OldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_Asincrono_OldResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronicoAdjuntos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MensajeRequest" type="tns:MensajeAdjuntosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronicoAdjuntosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronicoAdjuntosResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_EstandarSQL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MailCopia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Formato" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Importancia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_EstandarSQLResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnvioCorreoElectronico_EstandarSQLResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_Asincrono">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdAplicacion" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Formato" type="tns:FormatoEMAIL" />
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicio" type="tns:TipoServicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoElectronico_AsincronoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoElectronico_AsincronoResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarCorreoSES">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="de" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="para" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cuerpo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="adjuntos" type="tns:ArrayOfDocumentoAdjunto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarCorreoSESResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarCorreoSESResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_Portal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Destinatario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CC" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CCO" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Cuerpo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Formato" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Importancia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnvioCorreoElectronico_PortalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnvioCorreoElectronico_PortalResult" type="tns:MensajeResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EnviarMensaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarMensaje_MicrobloggingRequest" type="tns:EnviarMensaje_MicrobloggingRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EnviarMensaje_MicrobloggingRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario_Remitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EnviarMensajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EnviarMensajeResult" type="tns:Mensaje_MicrobloggingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Mensaje_MicrobloggingResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMensaje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionError" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ComentarMensaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComentarMensaje_MicrobloggingRequest" type="tns:ComentarMensaje_MicrobloggingRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ComentarMensaje_MicrobloggingRequest">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMensaje_padre" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario_Remitente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ComentarMensajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ComentarMensajeResult" type="tns:Mensaje_MicrobloggingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerMensajesActualizadosTOP20">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerMensajesActualizadosTOP20Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerMensajesActualizadosTOP20Result" type="tns:ObtenerMensajes_MicrobloggingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ObtenerMensajes_MicrobloggingResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mensajes" type="tns:ArrayOfMensaje_Microblogging" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionError" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMensaje_Microblogging">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Mensaje_Microblogging" type="tns:Mensaje_Microblogging" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mensaje_Microblogging">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdMensaje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoMensaje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdMensaje_padre" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mensaje" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario_Remitente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaMensaje" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerDestinatariosMensaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodigoUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerDestinatariosMensajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ObtenerDestinatariosMensajeResult" type="tns:ObtenerDestinatariosMensaje_MicrobloggingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ObtenerDestinatariosMensaje_MicrobloggingResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Destinatarios" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionError" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_OldSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_Old" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_OldSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_OldResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_MailSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_MailSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_MailResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_SQL_ServerSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_SQL_Server" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_SQL_ServerSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_SQL_ServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_AFEXSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_AFEX" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_AFEXSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_AFEXResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_2_OldSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_2_Old" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_2_OldSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_2_OldResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_2SoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_2" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Mail_2SoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Mail_2Response" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronicoAdjuntos_OldSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronicoAdjuntos_Old" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronicoAdjuntos_OldSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronicoAdjuntos_OldResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_EstandarSQL_OldSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_EstandarSQL_Old" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_EstandarSQL_OldSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_EstandarSQL_OldResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_AplicacionSQLSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_AplicacionSQL" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_AplicacionSQLSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_AplicacionSQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Asincrono_OldSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Asincrono_Old" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_Asincrono_OldSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Asincrono_OldResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronicoAdjuntosSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronicoAdjuntos" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronicoAdjuntosSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronicoAdjuntosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_EstandarSQLSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_EstandarSQL" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_EstandarSQLSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_EstandarSQLResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_AsincronoSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_Asincrono" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoElectronico_AsincronoSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoElectronico_AsincronoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoSESSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoSES" />
+  </wsdl:message>
+  <wsdl:message name="EnviarCorreoSESSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarCorreoSESResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_PortalSoapIn">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_Portal" />
+  </wsdl:message>
+  <wsdl:message name="EnvioCorreoElectronico_PortalSoapOut">
+    <wsdl:part name="parameters" element="tns:EnvioCorreoElectronico_PortalResponse" />
+  </wsdl:message>
+  <wsdl:message name="EnviarMensajeSoapIn">
+    <wsdl:part name="parameters" element="tns:EnviarMensaje" />
+  </wsdl:message>
+  <wsdl:message name="EnviarMensajeSoapOut">
+    <wsdl:part name="parameters" element="tns:EnviarMensajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ComentarMensajeSoapIn">
+    <wsdl:part name="parameters" element="tns:ComentarMensaje" />
+  </wsdl:message>
+  <wsdl:message name="ComentarMensajeSoapOut">
+    <wsdl:part name="parameters" element="tns:ComentarMensajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerMensajesActualizadosTOP20SoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerMensajesActualizadosTOP20" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerMensajesActualizadosTOP20SoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerMensajesActualizadosTOP20Response" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDestinatariosMensajeSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerDestinatariosMensaje" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerDestinatariosMensajeSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerDestinatariosMensajeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IESB_AV_ServicioMensajesSoap">
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_Old">
+      <wsdl:input message="tns:EnviarCorreoElectronico_Mail_OldSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_Mail_OldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail">
+      <wsdl:input message="tns:EnviarCorreoElectronico_MailSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_MailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_SQL_Server">
+      <wsdl:input message="tns:EnviarCorreoElectronico_SQL_ServerSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_SQL_ServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AFEX">
+      <wsdl:input message="tns:EnvioCorreoElectronico_AFEXSoapIn" />
+      <wsdl:output message="tns:EnvioCorreoElectronico_AFEXSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2_Old">
+      <wsdl:input message="tns:EnviarCorreoElectronico_Mail_2_OldSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_Mail_2_OldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2">
+      <wsdl:input message="tns:EnviarCorreoElectronico_Mail_2SoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_Mail_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos_Old">
+      <wsdl:input message="tns:EnviarCorreoElectronicoAdjuntos_OldSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronicoAdjuntos_OldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL_Old">
+      <wsdl:input message="tns:EnvioCorreoElectronico_EstandarSQL_OldSoapIn" />
+      <wsdl:output message="tns:EnvioCorreoElectronico_EstandarSQL_OldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AplicacionSQL">
+      <wsdl:input message="tns:EnvioCorreoElectronico_AplicacionSQLSoapIn" />
+      <wsdl:output message="tns:EnvioCorreoElectronico_AplicacionSQLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono_Old">
+      <wsdl:input message="tns:EnviarCorreoElectronico_Asincrono_OldSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_Asincrono_OldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos">
+      <wsdl:input message="tns:EnviarCorreoElectronicoAdjuntosSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronicoAdjuntosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL">
+      <wsdl:input message="tns:EnvioCorreoElectronico_EstandarSQLSoapIn" />
+      <wsdl:output message="tns:EnvioCorreoElectronico_EstandarSQLSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono">
+      <wsdl:input message="tns:EnviarCorreoElectronico_AsincronoSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoElectronico_AsincronoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoSES">
+      <wsdl:input message="tns:EnviarCorreoSESSoapIn" />
+      <wsdl:output message="tns:EnviarCorreoSESSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_Portal">
+      <wsdl:input message="tns:EnvioCorreoElectronico_PortalSoapIn" />
+      <wsdl:output message="tns:EnvioCorreoElectronico_PortalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensaje">
+      <wsdl:input message="tns:EnviarMensajeSoapIn" />
+      <wsdl:output message="tns:EnviarMensajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComentarMensaje">
+      <wsdl:input message="tns:ComentarMensajeSoapIn" />
+      <wsdl:output message="tns:ComentarMensajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMensajesActualizadosTOP20">
+      <wsdl:input message="tns:ObtenerMensajesActualizadosTOP20SoapIn" />
+      <wsdl:output message="tns:ObtenerMensajesActualizadosTOP20SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDestinatariosMensaje">
+      <wsdl:input message="tns:ObtenerDestinatariosMensajeSoapIn" />
+      <wsdl:output message="tns:ObtenerDestinatariosMensajeSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IESB_AV_ServicioMensajesSoap" type="tns:IESB_AV_ServicioMensajesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_Old">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_Old" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_SQL_Server">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_SQL_Server" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AFEX">
+      <soap:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_AFEX" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2_Old">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_2_Old" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos_Old">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronicoAdjuntos_Old" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL_Old">
+      <soap:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_EstandarSQL_Old" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AplicacionSQL">
+      <soap:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_AplicacionSQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono_Old">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Asincrono_Old" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronicoAdjuntos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL">
+      <soap:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_EstandarSQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Asincrono" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoSES">
+      <soap:operation soapAction="http://tempuri.org/EnviarCorreoSES" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_Portal">
+      <soap:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_Portal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensaje">
+      <soap:operation soapAction="http://tempuri.org/EnviarMensaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComentarMensaje">
+      <soap:operation soapAction="http://tempuri.org/ComentarMensaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMensajesActualizadosTOP20">
+      <soap:operation soapAction="http://tempuri.org/ObtenerMensajesActualizadosTOP20" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDestinatariosMensaje">
+      <soap:operation soapAction="http://tempuri.org/ObtenerDestinatariosMensaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="IESB_AV_ServicioMensajesSoap12" type="tns:IESB_AV_ServicioMensajesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_Old">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_Old" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_SQL_Server">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_SQL_Server" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AFEX">
+      <soap12:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_AFEX" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2_Old">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_2_Old" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Mail_2">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Mail_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos_Old">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronicoAdjuntos_Old" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL_Old">
+      <soap12:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_EstandarSQL_Old" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_AplicacionSQL">
+      <soap12:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_AplicacionSQL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono_Old">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Asincrono_Old" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronicoAdjuntos">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronicoAdjuntos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_EstandarSQL">
+      <soap12:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_EstandarSQL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoElectronico_Asincrono">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoElectronico_Asincrono" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarCorreoSES">
+      <soap12:operation soapAction="http://tempuri.org/EnviarCorreoSES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnvioCorreoElectronico_Portal">
+      <soap12:operation soapAction="http://tempuri.org/EnvioCorreoElectronico_Portal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EnviarMensaje">
+      <soap12:operation soapAction="http://tempuri.org/EnviarMensaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComentarMensaje">
+      <soap12:operation soapAction="http://tempuri.org/ComentarMensaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerMensajesActualizadosTOP20">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerMensajesActualizadosTOP20" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerDestinatariosMensaje">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerDestinatariosMensaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IESB_AV_ServicioMensajes">
+    <wsdl:port name="IESB_AV_ServicioMensajesSoap" binding="tns:IESB_AV_ServicioMensajesSoap">
+      <soap:address location="http://192.168.160.39:9005/IESB_AV_ServicioMensajes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="IESB_AV_ServicioMensajesSoap12" binding="tns:IESB_AV_ServicioMensajesSoap12">
+      <soap12:address location="http://192.168.160.39:9005/IESB_AV_ServicioMensajes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

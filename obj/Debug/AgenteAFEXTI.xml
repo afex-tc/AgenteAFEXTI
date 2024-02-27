@@ -1,0 +1,987 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+AgenteAFEXTI
+</name>
+</assembly>
+<members>
+<member name="T:AgenteAFEXTI.My.Resources.Resources">
+<summary>
+  Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+</summary>
+</member>
+<member name="P:AgenteAFEXTI.My.Resources.Resources.ResourceManager">
+<summary>
+  Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+</summary>
+</member>
+<member name="P:AgenteAFEXTI.My.Resources.Resources.Culture">
+<summary>
+  Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+  búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+</summary>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.ProcesarArchivos(System.String,System.String,AgenteAFEXTI.ReglasCopia.ReglasCopia.TipoAccionArchivos,System.String,System.String,System.Int32,System.Int32@,System.String,System.String,System.String,System.Int32@,System.Int32@,System.Int32@,System.Int32@,System.Boolean,System.String)">
+ <summary>
+ Copia o Valida los arhivos entre una ruta de origen y otra de destino, solo valida o copia lo diferente
+ </summary>
+ <param name="Servicio"></param>
+ <param name="Accion"></param>
+ <param name="DirectorioOrigen"></param>
+ <param name="DirectorioDestino"></param>
+ <param name="VerbosidadLog"></param>
+ <param name="CantidadArchivos"></param>
+ <param name="ArchivosExcluidos"></param>
+ <param name="DirectoriosExcluidos"></param>
+ <param name="RutaDestinoRaiz"></param>
+ <param name="ArchivosLargos"></param>
+ <param name="DirectoriosLargos"></param>
+ <param name="CantidadArchivosExcluidos"></param>
+ <param name="CantidadDirectoriosExcluidos"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.ValidarExcluido(System.String,System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Valida si un directorio o archivo se encuentra dentro del listado de los excluidos
+ </summary>
+ <param name="EncabezadoLog">descripción para el log</param>
+ <param name="ListaExcluidos">Lista de elementos exluidos, deben estar separados por ;</param>
+ <param name="Elemento">Elemento que se revisará denrro de los excluidos</param>
+ <returns>True en caso de que ELEMENTO esté excluido </returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.ProcesaRutaDestino(AgenteAFEXTI.ReglasCopia.ReglasCopia.TipoElementoRuta,System.String,System.String,System.String,System.String@,System.String@,System.String,System.String,System.Int32)">
+ <summary>
+Toma una ruta de directorio o archivo y devuelve la nueva ruta validando si la ruta sobrepasa el máximo permitido
+devuelve también el nombre del directorio o de archivo en caso de exceder el máximo
+ </summary>
+ <param name="Tipo">1: archivo; 2: directorio</param>
+ <param name="Ruta"></param>
+ <param name="RutaRaiz"></param>
+ <param name="RutaElementosLargos"></param>
+ <param name="NuevaRuta"></param>
+ <param name="NombreElemento">si se valida la ruta de un archivo, aquí debe venir el nombre del archivo, de lo contrario vacio</param>
+ <param name="Servicio"></param>
+ <param name="EncabezadoLog"></param>
+ <param name="VerbosidadLog"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.LogRutaLarga(AgenteAFEXTI.ReglasCopia.ReglasCopia.TipoElementoRuta,System.String,System.String,System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Escribe en un txt la ruta original del elemento largo, para que se conozca su ruta original
+ </summary>
+ <param name="Tipo">1: archivo; 2: directorio</param>
+ <param name="NombreElemento"></param>
+ <param name="RutaOrigen"></param>
+ <param name="Servicio"></param>
+ <param name="EncabezadoLog"></param>
+ <param name="VerbosidadLog"></param>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.LargoMaximoRuta(AgenteAFEXTI.ReglasCopia.ReglasCopia.TipoElementoRuta)">
+ <summary>
+ Devuelve el largo máximo que puede tener una ruta para un archivo o para un directorio
+ </summary>
+ <param name="Tipo"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.CorrespondeCopiar(AgenteAFEXTI.ReglasCopia.ReglasCopia.TipoElementoRuta,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+ <summary>
+ Valida criterios del archivo o directorio para permitir procesar o no
+ </summary>
+ <param name="Tipo"></param>
+ <param name="Origen"></param>
+ <param name="Destino"></param>
+ <param name="ArchivosExcluidos"></param>
+ <param name="DirectoriosExcluidos"></param>
+ <param name="Servicio"></param>
+ <param name="EncabezadoLog"></param>
+ <param name="VerbosidadLog"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.CambiarNombreDirectorio(System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Actualiza el nombre de un directorio
+ </summary>
+ <param name="Servicio">Nombre del servicio que solicita el cambio de nombre</param>
+ <param name="Directorio">Ruta completa del directorio al que se cambia el nombnre</param>
+ <param name="NuevoNombre">Ruta completa del directorio con el nuevo nombre</param>
+ <param name="VerbosidadLog">Nivel de verbosidad para LOG's</param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.ExisteRuta(System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Verifica si existe una ruta
+ </summary>
+ <param name="Ruta">Ruta a validar</param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.ExistenArchivos(System.String,System.String,System.String,System.Int32)">
+ <summary>
+ Verifica si existen archivos en la ruta consultada o en sus sub directorios
+ </summary>
+ <param name="Servicio"></param>
+ <param name="Etiqueta"></param>
+ <param name="Ruta"></param>
+ <param name="VerbosidadLog"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCopia.ReglasCopia.EliminarRuta(System.String,System.String,System.String,System.Int32,System.Int32)">
+ <summary>
+ Elimina la información dentro de una ruta
+ </summary>
+ <param name="Ruta"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasAgente.ReglasAgente.VerificarColasPegasdas">
+ <summary>
+ Verifica si existen colas pegadas para informar y que se puedan liberar
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasAgente.ReglasAgente.VerificarProgramacionHOST">
+ <summary>
+ Verifica qué acción debe ejecutar en este momento el HOST donde se encunetra instalado el AGENTE
+ </summary>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasAgente.ReglasAgente.CopiarArchivos(AgenteAFEXTI.ReglasProgramacion.Programacion,System.String)">
+ <summary>
+ Copia archivos de una ruta a otra
+ </summary>
+ <param name="Programacion"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasAgente.ReglasAgente.VerificarRutaOrigen(AgenteAFEXTI.ReglasProgramacion.Programacion,System.String)">
+ <summary>
+ Verifica si la ruta origen existe
+ </summary>
+ <param name="Programacion"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasCorreo.ReglasCorreo.EnviarCorreo(System.String,System.String,System.String,System.String)">
+ <summary>
+ Envía correo a través de ESB_AFEX
+ </summary>
+ <param name="Para"></param>
+ <param name="Copia"></param>
+ <param name="Asunto"></param>
+ <param name="Cuerpo"></param>
+</member>
+<member name="M:AgenteAFEXTI.ReglasLog.ReglasLog.CrearLog(System.String,System.String,AgenteAFEXTI.ReglasLog.ReglasLog.TipoLog,System.Int32,System.Int32)">
+ <summary>
+ Se comunica con el servicio de log para la inserción
+ </summary>
+ <param name="Contenido"></param>
+ <param name="TipoLog">1: Info; 2: Warning; 3: Error</param>
+ <param name="VerbosidadLog"></param>
+ <param name="VerbosidadRequerida"></param>
+</member>
+<member name="M:AgenteAFEXTI.ReglasLog.ReglasLog.InsertarLog(System.String,AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus,System.String)">
+ <summary>
+ Inserta log en DATADOG a través de ESB_AFEX
+ </summary>
+ <param name="Descripcion"></param>
+ <param name="Estado"></param>
+</member>
+<member name="M:AgenteAFEXTI.ReglasLog.ReglasLog.DevolverSourceDD(System.String)">
+ <summary>
+ Devuelve el tipo de origen que corresponde para DATADOG
+ </summary>
+ <param name="Sitio"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasLog.ReglasLog.CorrespondeLog(System.Int32,System.Int32)">
+ <summary>
+ Verifica si corresponde grabar log según la verboidad
+ </summary>
+ <param name="VerbosidadLog"></param>
+ <param name="VerbosidadRequerida"></param>
+ <returns></returns>
+</member>
+<member name="M:AgenteAFEXTI.ReglasPublicador.ReglasPublicador.ValidarPublicacion">
+ <summary>
+ Valida los archivos que se publicarán, y considera solo los que sean de una fecha menor entre el destino y el origen
+ </summary>
+</member>
+<member name="M:AgenteAFEXTI.ReglasPublicador.ReglasPublicador.RealizarPublicacion">
+ <summary>
+ Realiza la publicación configurada en el XML de publicación
+ </summary>
+</member>
+<member name="M:AgenteAFEXTI.ReglasPublicador.ReglasPublicador.EliminarRespaldosAnteriores(System.String)">
+ <summary>
+ Elimina los directorios de una ruta especifica
+ </summary>
+ <param name="Ruta"></param>
+ <returns></returns>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.#ctor">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTCompleted">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLog(AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDog(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOST(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTAsync(AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog,System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AFEX_ServicioLogger.IESB_AFEX_ServicioLogger.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log.TipoContenido">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log.Contenido">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log.Origen">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.Log.Descripcion">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.TipoContenido">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.TipoContenido.Text">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.TipoContenido.Xml">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.TipoContenido.Json">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.Source">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.Duration">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.Servicio">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.LogDatadogStatus">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.Contenido">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.Tag">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.FechaInicio">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDataDog.FechaTermino">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.DEFAULT">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.EAFEX">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.AFEXCHANGEWEB">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.MONEYGRAM">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.WSAFEXAPI">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.AFEXCHANGEWEBDLL">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.AFEXGIROSAPI">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.MONITORAGENTES">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.ELEKTRONCONSUMER">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.WSCUMPLIMIENTO">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.ESB_AFEX">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.AFEXENTERPRISESERVICEBUS">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.AFEXPRESSWEB">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogSource.PULPO">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus.Emergency">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus.Error">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus.Warn">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AFEX_ServicioLogger.LogDatadogStatus.Info">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AFEX_ServicioLogger.InsertarLogDataDogHOSTCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.#ctor">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2Completed">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoSESCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarMensajeCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ComentarMensajeCompleted">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20Completed">
+<remarks/>
+</member>
+<member name="E:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeCompleted">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_Old(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_Server(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerAsync(System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEX(System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Double)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXAsync(System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Double)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXAsync(System.Int32,System.Int32,System.Int32,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Double,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_Old(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2Async(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2Async(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_Old(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_Old(System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQL(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLAsync(System.Int32,System.Int32,System.Int32,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLAsync(System.Int32,System.Int32,System.Int32,System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_Old(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldAsync(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldAsync(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL(System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLAsync(System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoAsync(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoAsync(System.Int32,System.String,System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL,AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoSES(System.String,System.String[],System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto[])">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoSESAsync(System.String,System.String[],System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto[])">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarCorreoSESAsync(System.String,System.String[],System.String,System.String,AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto[],System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_Portal(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalAsync(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarMensaje(AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarMensajeAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.EnviarMensajeAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ComentarMensaje(AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ComentarMensajeAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ComentarMensajeAsync(AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20(System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20Async(System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20Async(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensaje(System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeAsync(System.String)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeAsync(System.String,System.Object)">
+<remarks/>
+</member>
+<member name="M:AgenteAFEXTI.IESB_AV_ServicioMensajes.IESB_AV_ServicioMensajes.CancelAsync(System.Object)">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL.Ninguno">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL.TEXT">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.FormatoEMAIL.HTML">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio.Ninguno">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio.Transferencias">
+<remarks/>
+</member>
+<member name="F:AgenteAFEXTI.IESB_AV_ServicioMensajes.TipoServicio.AMEX">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeResponse">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeResponse.Resultado">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeResponse.IsError">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeResponse.DescripcionError">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensaje_MicrobloggingResponse">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensaje_MicrobloggingResponse.Destinatarios">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensaje_MicrobloggingResponse.IsError">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensaje_MicrobloggingResponse.DescripcionError">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.IdMensaje">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.TipoMensaje">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.IdMensaje_padre">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.Mensaje">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.CodigoUsuario_Remitente">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.FechaActualizacion">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_Microblogging.FechaMensaje">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajes_MicrobloggingResponse">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajes_MicrobloggingResponse.Mensajes">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajes_MicrobloggingResponse.IsError">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajes_MicrobloggingResponse.DescripcionError">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest.IdMensaje_padre">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest.CodigoUsuario_Remitente">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensaje_MicrobloggingRequest.Mensaje">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_MicrobloggingResponse">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_MicrobloggingResponse.IdMensaje">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_MicrobloggingResponse.IsError">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.Mensaje_MicrobloggingResponse.DescripcionError">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest.CodigoUsuario_Remitente">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest.Mensaje">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensaje_MicrobloggingRequest.Destinatarios">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto.Nombre">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.DocumentoAdjunto.Contenido">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.Destinatarios">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.Asunto">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.Cuerpo">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.Adjuntos">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.Formato">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeAdjuntosRequest.TipoServicio">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.Destinatarios">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.Asunto">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.Cuerpo">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.ContenidoDocumento1">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.NombreDocumento1">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.Formato">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.MensajeRequest.TipoServicio">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_OldCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_MailCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_SQL_ServerCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AFEXCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2_OldCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2CompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2CompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Mail_2CompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntos_OldCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQL_OldCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_AplicacionSQLCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_Asincrono_OldCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronicoAdjuntosCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_EstandarSQLCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoElectronico_AsincronoCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoSESCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoSESCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarCorreoSESCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnvioCorreoElectronico_PortalCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensajeCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensajeCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.EnviarMensajeCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensajeCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensajeCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ComentarMensajeCompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20CompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20CompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerMensajesActualizadosTOP20CompletedEventArgs.Result">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeCompletedEventHandler">
+<remarks/>
+</member>
+<member name="T:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeCompletedEventArgs">
+<remarks/>
+</member>
+<member name="P:AgenteAFEXTI.IESB_AV_ServicioMensajes.ObtenerDestinatariosMensajeCompletedEventArgs.Result">
+<remarks/>
+</member>
+</members>
+</doc>
