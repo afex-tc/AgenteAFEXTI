@@ -121,6 +121,7 @@
     <Compile Include="ProjectInstaller.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ReglasNegocio\ReglasComando.vb" />
     <Compile Include="ReglasNegocio\ReglasProgramacion.vb" />
     <Compile Include="ReglasNegocio\ReglasCopia.vb" />
     <Compile Include="ReglasNegocio\ReglasAgente.vb" />
@@ -257,6 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\IESB_AFEX_ServicioLogger\IESB_AFEX_ServicioLogger.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="configuracionagente.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

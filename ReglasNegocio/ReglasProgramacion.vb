@@ -1,7 +1,7 @@
 ﻿Namespace ReglasProgramacion
     Public Class Programacion
         Private _idColaProgramacion As String
-        Private _tipoProgramacion As Integer
+        Private _idTipoProgramacion As Integer
         Private _correoConfirmacion As String
         Private _correoError As String
         Private _rutaOrigen As String
@@ -19,6 +19,17 @@
         Private _diasCopiasAnteriores As Integer
         Private _directorioFecha As Boolean
         Private _diasRespaldo As Integer
+        Private _comando As ReglasComando.Comando
+
+        Public Property Comando()
+            Set(value)
+                Me._comando = value
+            End Set
+            Get
+                Return Me._comando
+            End Get
+        End Property
+
         Public Property IdColaProgramacion()
             Set(value)
                 Me._idColaProgramacion = value
@@ -27,12 +38,12 @@
                 Return Me._idColaProgramacion
             End Get
         End Property
-        Public Property TipoProgramacion()
+        Public Property IdTipoProgramacion()
             Set(value)
-                Me._tipoProgramacion = value
+                Me._idTipoProgramacion = value
             End Set
             Get
-                Return Me._tipoProgramacion
+                Return Me._idTipoProgramacion
             End Get
         End Property
 
@@ -194,34 +205,53 @@
 
                 If Reader("idcolaprogramacion") <> 0 Then
                     Me._idColaProgramacion = Reader("idcolaprogramacion")
-                    Me._tipoProgramacion = Reader("tipoprogramacion")
+                    Me._idTipoProgramacion = Reader("idtipoprogramacion")
                     Me._descripcionProgramacion = Reader("descripcionprogramacion")
                     Me._verbosidadLog = Reader("verbosidadlog")
                     Me._idColaProgramacion = Reader("idColaProgramacion")
                     Me._correoConfirmacion = Reader("correoConfirmacion")
                     Me._correoError = Reader("correoError")
-                    Me._rutaOrigen = Reader("rutaOrigen")
-                    Me._rutaDestino = Reader("rutaDestino")
+                    If Not IsDBNull(Reader("rutaOrigen")) Then Me._rutaOrigen = Reader("rutaOrigen")
+                    If Not IsDBNull(Reader("rutaDestino")) Then Me._rutaDestino = Reader("rutaDestino")
                     If Not IsDBNull(Reader("rutaRespaldo")) Then Me._rutaRespaldo = Reader("rutaRespaldo")
                     If Not IsDBNull(Reader("rutaRetencionOrigen")) Then Me._rutaRetencionOrigen = Reader("rutaRetencionOrigen")
                     If Not IsDBNull(Reader("archivosExcluidos")) Then Me._archivosExcluidos = Reader("archivosExcluidos")
                     If Not IsDBNull(Reader("directoriosExcluidos")) Then Me._directoriosExcluidos = Reader("directoriosExcluidos")
-                    Me._validarCopia = Reader("validarCopia")
-                    Me._eliminarOrigen = Reader("eliminarOrigen")
-                    Me._tipoColaProgramacion = Reader("tipocolaprogramacion")
-                    Me._cambiarNombreOrigen = Reader("cambiarnombreorigen")
-                    Me._diasCopiasAnteriores = Reader("diascopiasanteriores")
-                    Me._directorioFecha = Reader("directoriofecha")
-                    Me._diasRespaldo = Reader("diasrespaldo")
+                    If Not IsDBNull(Reader("validarCopia")) Then Me._validarCopia = Reader("validarCopia")
+                    If Not IsDBNull(Reader("eliminarOrigen")) Then Me._eliminarOrigen = Reader("eliminarOrigen")
+                    If Not IsDBNull(Reader("tipocolaprogramacion")) Then Me._tipoColaProgramacion = Reader("tipocolaprogramacion")
+                    If Not IsDBNull(Reader("cambiarnombreorigen")) Then Me._cambiarNombreOrigen = Reader("cambiarnombreorigen")
+                    If Not IsDBNull(Reader("diascopiasanteriores")) Then Me._diasCopiasAnteriores = Reader("diascopiasanteriores")
+                    If Not IsDBNull(Reader("directoriofecha")) Then Me._directorioFecha = Reader("directoriofecha")
+                    If Not IsDBNull(Reader("diasrespaldo")) Then Me._diasRespaldo = Reader("diasrespaldo")
+                    If Not IsDBNull(Reader("idcomando")) Then
+                        Dim _com As New ReglasComando.Comando
+                        _com.IdComando = Reader("idcomando")
+                        _com.TipoComando = Reader("tipocomando")
+                        _com.DescripcionComando = Reader("descripcioncomando")
+                        _com.ScriptComando = Reader("scriptcomando")
+                        If Not IsDBNull(Reader("nombrehostremoto")) Then _com.NombreHostRemoto = Reader("nombrehostremoto")
+
+                        Me._comando = _com
+                    End If
                 End If
             End If
         End Sub
     End Class
 
+    Public Enum TipoProgramacion
+        EjecucionScript = 1
+        CopiadoArchivos = 2
+        Publicacion = 3
+        EjecucionComando = 4
+        EliminarInstaladorInicio = 5
+    End Enum
+
     Public Enum TipoColaProgramacion
         Copiar = 1
         Validar = 2
         CopiaProgramada = 3
+        EjecucionComando = 4
     End Enum
 
 End Namespace

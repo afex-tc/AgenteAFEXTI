@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>PruebaAgente</RootNamespace>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AgenteAFEXTI.vbproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Libreria de clases">
+      <HintPath>..\bin\Debug\Libreria de clases.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

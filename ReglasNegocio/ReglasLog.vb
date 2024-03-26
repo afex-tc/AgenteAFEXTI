@@ -47,7 +47,7 @@ Namespace ReglasLog
                 _logData.Servicio = Servicio
                 _logData.Source = IESB_AFEX_ServicioLogger.LogDatadogSource.DEFAULT
 
-                _log.InsertarLogDataDogHOST(_logData, "AgenteAFEXTI (v1)", Dns.GetHostName())
+                _log.InsertarLogDataDogHOST(_logData, "AgenteAFEXTI_v2_", Dns.GetHostName())
 
             Catch ex As Exception
 

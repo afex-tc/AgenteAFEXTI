@@ -155,11 +155,11 @@ Namespace ReglasCopia
                                 ' verifica si elimina
                                 If Accion = TipoAccionArchivos.Copiar And EliminarOrigen And Not _errorCopiado Then
                                     ReglasLog.ReglasLog.CrearLog(Servicio, _encabezadoLog & " | Eliminar Archivo Origen : " & _archivo, TipoLog.Info,
-                                                                         VerbosidadLog, 1)
+                                                                         VerbosidadLog, 2)
                                     File.Delete(_archivo)
 
                                     ReglasLog.ReglasLog.CrearLog(Servicio, _encabezadoLog & " | Archivo Origen Eliminado : " & _archivo, TipoLog.Info,
-                                                                         VerbosidadLog, 1)
+                                                                         VerbosidadLog, 2)
                                 End If
 
                                 ' acciones independientes de su fecha de actualización
